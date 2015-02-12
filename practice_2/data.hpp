@@ -1,7 +1,7 @@
 #ifndef H_DATA
 #define H_DATA
 
-#include <boost\archive\binary_iarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 
 typedef unsigned int u_int;
 
