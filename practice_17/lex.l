@@ -11,8 +11,8 @@
 (?i:end;)                    return _END;
 (?i:not)                     return NOT;
 (?i:=|and|or)                return LOG_OPERATION;
-(?i:[a-zA-Z][a-zA-Z_0-9]*)   return VARIBLE;
-[1-9][0-9]*                  return INT_CONST;
+(?i:[a-zA-Z_][a-zA-Z_0-9]*)  return VARIBLE;
+[0-9]+                       return INT_CONST;
 [\*\+\-\/]                   return INT_OPERATION;
 :=                           return ASSIGNMENT;
 ;                            return SEMICOLON;

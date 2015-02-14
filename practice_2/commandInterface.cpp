@@ -21,6 +21,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 		std::cout << "Enter a star name:" << std::endl;
 		do {
 			std::getline(std::cin, starName);
+            boost::algorithm::trim(starName);
 			if (starName.length() < 1) {
 				std::cout << "Name can't be empty, enter again..." << std::endl;
 				inputIncorrect = true;
@@ -31,6 +32,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 		std::cout << "Enter a star azimuth" << std::endl;
 		do {
 			std::getline(std::cin, inputTemp);
+            boost::algorithm::trim(inputTemp);
 			if (is_number(inputTemp)) {
 				starAzimuth = std::stoi(inputTemp);
 				inputIncorrect = false;
@@ -52,6 +54,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 		std::cout << "Enter a star zenith" << std::endl;
 		do {
 			std::getline(std::cin, inputTemp);
+            boost::algorithm::trim(inputTemp);
 			if (is_number(inputTemp)) {
 				starZenith = std::stoi(inputTemp);
 				inputIncorrect = false;
@@ -73,6 +76,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 		std::cout << "Enter a star magnitude" << std::endl;
 		do {
 			std::getline(std::cin, inputTemp);
+            boost::algorithm::trim(inputTemp);
 			if (is_number(inputTemp)) {
 				starMagnitude = std::stoi(inputTemp);
 				inputIncorrect = false;
@@ -143,6 +147,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 				std::cout << "Enter a new star name (nothing for - " << (*star).getName() << "):" << std::endl;
 
 				std::getline(std::cin, starName);
+                boost::algorithm::trim(starName);
 				if (starName.length() > 1) {
 					(*star).setName(starName);
 				}
@@ -150,6 +155,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 				std::cout << "Enter a new star azimuth (nothing for - " << (*star).getLocation().getAzimuth() << "):" << std::endl;
 				do {
 					std::getline(std::cin, inputTemp);
+                    boost::algorithm::trim(inputTemp);
 					inputIncorrect = false;
 					if (inputTemp.length() == 0) {
 						starAzimuth = (*star).getLocation().getAzimuth();
@@ -174,6 +180,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 				std::cout << "Enter a new star zenith (nothing for - " << (*star).getLocation().getZenith() << "):" << std::endl;
 				do {
 					std::getline(std::cin, inputTemp);
+                    boost::algorithm::trim(inputTemp);
 					inputIncorrect = false;
 					if (inputTemp.length() == 0) {
 						starZenith = (*star).getLocation().getZenith();
@@ -200,6 +207,7 @@ std::vector<command> initCommandList(std::list<Star> &stars) {
 				std::cout << "Enter a new star magnitude (nothing for - " << (*star).getMagnitude() << "):" << std::endl;
 				do {
 					std::getline(std::cin, inputTemp);
+                    boost::algorithm::trim(inputTemp);
 					inputIncorrect = false;
 					if (inputTemp.length() == 0) {
 						starMagnitude = (*star).getMagnitude();

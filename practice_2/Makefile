@@ -6,13 +6,13 @@ all: pr2
 pr2: main.o commandInterface.o data.o
 	$(CC) $(CFLAGS) main.o commandInterface.o data.o -o pr2
 
-main.o:
+main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 
-commandInterface.o:
+commandInterface.o: commandInterface.cpp
 	$(CC) $(CFLAGS) -c commandInterface.cpp
 
-data.o:
+data.o: data.cpp
 	$(CC) $(CFLAGS) -c data.cpp
 
 clean:

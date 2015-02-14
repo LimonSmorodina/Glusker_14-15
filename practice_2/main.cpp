@@ -16,6 +16,7 @@ int main() {
 	do {
 		std::string userInput;
 		std::getline(std::cin, userInput);
+        boost::algorithm::trim (userInput);
 
 		std::vector<std::string> words;
 		boost::split(words, userInput, boost::is_any_of(" "), boost::token_compress_on);
