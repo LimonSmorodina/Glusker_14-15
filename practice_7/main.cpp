@@ -32,49 +32,37 @@ public:
 		}
 	}
 
-	void count5end(std::ostream &output = std::cout) {
-		node *t = head;
-		int count = 0;
+	void allInOne() {
+		node *t = head, *prev = nullptr, *next = nullptr, *tmp;
+ 		int count = 0, primePrevVal, curVal;
+
 		while (t) {
-			if (t->value % 10 == 5) count++;
-			t = t->next;
-		}
-		output << count << std::endl;
-	}
+			curVal = t->value;
+			next = t->next;
 
-	void delete_onXX() {
-		node *t, *tmp;
+			if (t->value % 5 == 0) count++;
 
-		while (head && head->value % 10 == head->value % 100 / 10) {
-			tmp = head->next;
-			delete head;
-			head = tmp;
-		}
-		t = head;
-		while (t && t->next) {
-			if (t->next->value % 10 == t->next->value % 100 / 10) {
-				tmp = t->next->next;
-				delete t->next;
-				t->next = tmp;
+			if (prev && primePrevVal - 1 == curVal) {
+				prev->next = next;
+				delete t;
+				t = prev;
 			}
-			else {
-				t = t->next;
-			}
-		}
-	}
 
-	void add_1_after_positive() {
-		node *t = head;
-		while (t) {
-			if (t->value > 0) {
+			if (curVal > 0) {
 				t->next = new node({ t->next, 1 });
-				t = t->next->next;
+				next = (prev = t->next)->next;
 			}
 			else {
-				t = t->next;
+				prev = t;
 			}
+			
+			primePrevVal = curVal;
+			t = next;
 		}
+
+		std::cout << "Number of elemnts ends on 5 - " << count << std::endl;
 	}
+
 private:
 	struct node {
 		node *next;
@@ -86,13 +74,19 @@ int main() {
 	std::string input;
 	IntList *list = new IntList;
 
+	list->insert(-5);
+	list->insert(4);
+	list->insert(5);
+	list->insert(6);
+	list->insert(-10);
+	list->insert(-9);
+	list->insert(3);
+
 	std::cout
 		<< "1 - insert\n"
-		<< "2 - listElems\n"
-		<< "3 - count5end\n"
-		<< "4 - delete_onXX\n"
-		<< "5 - add_1_after_positive\n"
-		<< "6 - exit\n";
+		<< "2 - calculate\n"
+		<< "3 - listElems\n"
+		<< "4 - exit\n";
 
 	while (true) {
 		do {
@@ -117,18 +111,12 @@ int main() {
 			}
 			break;
 		case 2:
-			list->listElems();
+			list->allInOne();
 			break;
 		case 3:
-			list->count5end();
+			list->listElems();
 			break;
 		case 4:
-			list->delete_onXX();
-			break;
-		case 5:
-			list->add_1_after_positive();
-			break;
-		case 6:
             delete list;
 			return 0;
 			break;
