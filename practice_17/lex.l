@@ -13,7 +13,7 @@
 (?i:=|and|or)                return LOG_OPERATION;
 (?i:[a-zA-Z_][a-zA-Z_0-9]*)  return VARIBLE;
 [0-9]+                       return INT_CONST;
-[\*\+\-\/]                   return INT_OPERATION;
+[*+-/]                   return INT_OPERATION;
 :=                           return ASSIGNMENT;
 ;                            return SEMICOLON;
 \(                           return S_SCOPE;
